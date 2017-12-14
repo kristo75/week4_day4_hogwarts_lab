@@ -2,6 +2,7 @@ require('sinatra')
 require('sinatra/contrib/all')
 require('pry-byebug')
 require_relative('./models/student.rb')
+require_relative('./models/house.rb')
 
 # INDEX - show all students
 
@@ -13,6 +14,7 @@ end
 # NEW - gets new student data from user
 
 get('/students/new') do
+  @houses = House.all()
   erb(:new)
 end
 
@@ -24,3 +26,5 @@ post('/students') do
   params.to_s()
   erb(:create)
 end
+
+#
